@@ -1,6 +1,8 @@
 // Github Service
 import axios from 'axios';
 import { UserStats, Repo } from '../interfaces';
+import dotenv from 'dotenv';
+dotenv.config();
 export class GithubService {
   private baseURL;
   private headers;
@@ -99,3 +101,5 @@ export class GithubService {
     }
   }
 }
+
+export default new GithubService();

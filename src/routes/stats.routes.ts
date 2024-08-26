@@ -1,9 +1,17 @@
 import { Router } from 'express';
-import { getStats } from '../controllers/stats.controller';
+import StatsController from '../controllers/stats.controller';
 
-const statsRputer = Router();
+const statsRouter = Router();
 
-statsRputer.get('/stats/:username', getStats);
-statsRputer.get('/stats', getStats);
+// Wierd behavior with this inside the class
+// solution was bind the functions with the class
+statsRouter.get(
+  '/stats/:username',
+  StatsController.getStats.bind(StatsController)
+);
+statsRouter.get(
+  '/stats',
+  StatsController.getMultipleStats.bind(StatsController)
+);
 
-export { statsRputer };
+export { statsRouter };
